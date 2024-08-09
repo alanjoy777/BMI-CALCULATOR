@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI-Calculator</title>
+    <link rel="icon" type="image/jpg" href="https://www.tataaia.com/content/dam/tataaialifeinsurancecompanylimited/calculator/life-planning-tools/bmi-calculator/banner-image-bmi.png">
+    <link rel="stylesheet" href="./style.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+
+
+    <div class="section">
+        
+        <div class="wrapper">
+               
+            <div class="main">
+                  <div class="heading">
+                         <img src="https://media.licdn.com/dms/image/D4D12AQEN7C96fg33YQ/article-cover_image-shrink_600_2000/0/1704190425684?e=2147483647&v=beta&t=MXnUDyh8xQo_7sdrR-bGHBQZ-xIawXW19CgW4vRIdGM" alt="">  
+                        <h1>BMI CALCULATOR</h1>
+                        
+                  </div>
+                  
+                  <div class="row">
+                       <div class="col-4">
+                         <img id="img" src="https://sneha-webdeveloper.github.io/BMI-Calculator/images/bmi.png" alt="">
+                         <img id="img2" src="https://sneha-webdeveloper.github.io/BMI-Calculator/images/arrow.png" alt="">
+                       </div>
+                       <div class="col-4">
+                        <label class="mt-3" for=""><h3>GENDER</h3></label> <br>
+                         <input name="GENDER" type="radio"><label for=""><h4>Male</h4></label>  <input name="GENDER" type="radio"><label for=""><h4>Female</h4></label> <br>
+
+                             <br><br><br>
+                             <label for=""><h3>AGE <span><h5>(2 years and above)</h5></span></h3></label> <br>
+                                
+                             <input id="AGE" type="text" class="form-control">
+                               
+                       </div>
+                       <div class="col-4">
+                            <label class="mt-3" for=""><h3>Weight</h3></label> <br>
+                            <input id="Weight" type="text" class="form-control">
+                                <br><br> <br><br>
+
+                                <label for=""><h3>Height</h3></label> <br>
+                                <input id="Height" type="text" class="form-control">
+                                 <br> <br>
+                                <button class="btn btn-outline-primary" onclick="calculate()">CALCULATE</button> <button class="btn btn-outline-danger" onclick="reset()">RESET</button>
+
+                       </div>
+                  </div>
+
+                  <div class="footer">
+
+                         <h1 class="text-center mt-5">YOUR BMI IS</h1>
+                         <div id="result">
+                              
+                         </div>
+                  </div>
+
+            </div>
+                
+        </div>
+
+    </div>
+
+    <audio id="audioElement">
+        <source src="./bf7ecd964e9440cba17493e1b4a414c7.mp3" type="audio/mpeg">
+       
+    </audio>
+
+    <audio id="audioElement2">
+        <source src="./34e149f3e659494ab43c24eb49353485.mp3" type="audio/mpeg">
+       
+    </audio>
+
+    <audio id="audioElement3">
+        <source src="./4948ae0bff754871a7cf09e3f148c9fa.mp3" type="audio/mpeg">
+       
+    </audio>
+   
+    <audio id="audioElement4">
+        <source src="./1a2be380c23f476c86b024d58122afb0.mp3" type="audio/mpeg">
+       
+    </audio>
+
+
+  
+
+
+    <script>
+
+             let Height=document.getElementById('Height').value
+             console.log(Height);
+             
+                
+             function calculate(){
+
+       
+                let Weight=document.getElementById('Weight').value
+                console.log(Weight);
+
+                
+             let Height=document.getElementById('Height').value
+             console.log(Height);
+
+
+             age=document.getElementById('AGE').value
+
+           if(age==""){
+               alert("pls enter the age")
+             }else if(Weight==""){
+                alert("pls enter the weight")
+             }else if(Height==""){
+                alert("pls enter the height")
+             }else{
+
+
+                let BMI= (Weight*10000)/(Height**2)
+             console.log(BMI);
+             
+             let content=document.getElementById('result')
+
+             audio= document.getElementById('audioElement')
+
+             audio2= document.getElementById('audioElement2')
+
+             
+             audio3= document.getElementById('audioElement3')
+             audio4= document.getElementById('audioElement4')
+
+             let img2= document.getElementById('img2');
+
+             if(BMI<18.0){
+                img2.style.transform = "rotate(-180deg)";
+                audio.play()
+               content.innerHTML=`<h3 class="text-center text-primary"> ${Math.ceil(BMI)}kg/m^2 </h3> <br>
+                                     <h3 class="text-center text-info">Underweight</h3> <br>
+                                     <h4 class="text-center text-danger">Focus on nutrient-dense foods to gain weight gradually. Regular exercise can help build muscle mass.</h4>
+                                     
+                                     `
+                                   
+
+             }else if((BMI>18.0) &&(BMI<24.9) ){
+                img2.style.transform = "rotate(-120deg)";
+                audio2.play()
+                content.innerHTML=`<h3 class="text-center text-primary"> ${Math.ceil(BMI)}kg/m^2 </h3> <br>
+                                     <h3 class="text-center text-info">Healthy</h3> <br>
+                                     <h4 class="text-center text-success">Maintain a balanced diet and regular physical activity to sustain overall health.</h4>`
+
+
+             }else if((BMI>25)&&(BMI<29)){
+                img2.style.transform = "rotate(-70deg)";
+                audio3.play()
+                content.innerHTML=`<h3 class="text-center text-primary"> ${Math.ceil(BMI)}kg/m^2 </h3> <br>
+                                     <h3 class="text-center text-info">OVER WEIGHT</h3> <br>
+                                     <h4 class="text-center text-warning">Adopt healthy eating habits, increase physical activity, and consider consulting a healthcare professional for guidance.</h4>`
+
+
+
+             }else{
+                img2.style.transform = "rotate(0deg)";
+                  audio4.play()
+                content.innerHTML=`<h3 class="text-center text-primary"> ${Math.ceil(BMI)}kg/m^2 </h3> <br>
+                                     <h3 class="text-center text-info">OBESE</h3> <br>
+                                     <h4 class="text-center text-danger">Focus on gradual weight loss through a combination of diet changes, increased exercise, and professional support..</h4>`
+
+
+             }
+             
+
+
+             }
+
+
+             }
+             
+
+
+             
+              
+
+
+         function   reset(){
+
+            img2.style.transform = "rotate(-90deg)";
+            document.getElementById('Weight').value=""
+            document.getElementById('Height').value=""
+            document.getElementById('AGE').value=""
+              
+            document.getElementById('result').innerHTML=""
+
+         }
+                     
+
+
+    </script>
+
+
+
+    
+</body>
+</html>
